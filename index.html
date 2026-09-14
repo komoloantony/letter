@@ -71,6 +71,19 @@
         pointer-events: none;
       }
 
+      .bear-side span {
+        display: inline-block;
+        animation: sideFloat 3.6s ease-in-out infinite;
+      }
+
+      .bear-side span:nth-child(2) {
+        animation-delay: 0.35s;
+      }
+
+      .bear-side span:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+
       .bear-left {
         left: clamp(8px, 4vw, 62px);
       }
@@ -88,6 +101,7 @@
         border-radius: 8px;
         background: rgba(255, 240, 220, 0.94);
         box-shadow: 0 28px 70px rgba(30, 12, 4, 0.36);
+        animation: letterArrive 1.15s ease both;
       }
 
       .letter::before {
@@ -142,6 +156,28 @@
         font-size: clamp(28px, 7vw, 46px);
       }
 
+      .ending-bears {
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        margin-top: 22px;
+        font-size: clamp(42px, 9vw, 72px);
+      }
+
+      .ending-bears span {
+        display: inline-block;
+        animation: teddyDance 1.45s ease-in-out infinite;
+        transform-origin: center bottom;
+      }
+
+      .ending-bears span:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+
+      .ending-bears span:nth-child(3) {
+        animation-delay: 0.5s;
+      }
+
       .flower {
         animation: bloom 1.4s ease both;
         transform-origin: center bottom;
@@ -172,6 +208,48 @@
         to {
           opacity: 1;
           transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes letterArrive {
+        from {
+          opacity: 0;
+          transform: translateY(26px) scale(0.98);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes sideFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-3deg);
+        }
+
+        50% {
+          transform: translateY(-14px) rotate(4deg);
+        }
+      }
+
+      @keyframes teddyDance {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-6deg) scale(1);
+        }
+
+        25% {
+          transform: translateY(-12px) rotate(7deg) scale(1.05);
+        }
+
+        50% {
+          transform: translateY(0) rotate(6deg) scale(1);
+        }
+
+        75% {
+          transform: translateY(-8px) rotate(-7deg) scale(1.04);
         }
       }
 
@@ -273,6 +351,12 @@
           <span class="flower">🌷</span>
           <span class="flower">🌺</span>
           <span class="flower">🌻</span>
+        </div>
+
+        <div class="ending-bears" aria-hidden="true">
+          <span>🧸</span>
+          <span>❤</span>
+          <span>🧸</span>
         </div>
       </article>
     </main>
