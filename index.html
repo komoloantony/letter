@@ -1,184 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Note of Gratitude</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To My Teddy</title>
     <style>
-        /* Refined Color Palette: Deeper, warmer tones for elegance */
-        :root {
-            --background-color: #FDF7F3; /* Very soft, almost white background */
-            --border-color: #E3D9CC; /* Light, dusty rose/beige border */
-            --primary-text-color: #3C3C3C; /* Dark charcoal for contrast */
-            --header-color: #9A504B; /* Muted terracotta/deep rose */
-            --accent-gold: #B48C45; /* Rich, antique gold for accents */
-            --highlight-color: #7A495B; /* Deep plum/rosewood for emphasis */
-            --list-color: #556B63; /* Muted sage green for list items */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: #3b2116;
+        background:
+          radial-gradient(circle at 20% 15%, rgba(255, 218, 185, 0.28), transparent 28%),
+          radial-gradient(circle at 80% 80%, rgba(196, 89, 73, 0.22), transparent 30%),
+          linear-gradient(135deg, #5a3325 0%, #7b4b36 42%, #3f241a 100%);
+        overflow-x: hidden;
+      }
+
+      .page {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 44px 18px;
+      }
+
+      .heart-bg {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.12;
+      }
+
+      .heart-bg::before,
+      .heart-bg::after {
+        position: absolute;
+        color: #ffd5cf;
+        font-size: clamp(160px, 28vw, 380px);
+        line-height: 1;
+        content: "❤";
+        transform: rotate(-12deg);
+      }
+
+      .heart-bg::before {
+        top: 8%;
+        left: 10%;
+      }
+
+      .heart-bg::after {
+        right: 7%;
+        bottom: 3%;
+        transform: rotate(14deg);
+      }
+
+      .bear-side {
+        position: fixed;
+        top: 50%;
+        z-index: 2;
+        display: grid;
+        gap: 22px;
+        color: #f2c29b;
+        font-size: clamp(48px, 7vw, 92px);
+        text-shadow: 0 12px 26px rgba(40, 18, 9, 0.35);
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .bear-left {
+        left: clamp(8px, 4vw, 62px);
+      }
+
+      .bear-right {
+        right: clamp(8px, 4vw, 62px);
+      }
+
+      .letter {
+        position: relative;
+        z-index: 3;
+        width: min(760px, 100%);
+        padding: clamp(28px, 6vw, 58px);
+        border: 1px solid rgba(112, 63, 43, 0.28);
+        border-radius: 8px;
+        background: rgba(255, 240, 220, 0.94);
+        box-shadow: 0 28px 70px rgba(30, 12, 4, 0.36);
+      }
+
+      .letter::before {
+        position: absolute;
+        inset: 14px;
+        border: 1px solid rgba(123, 75, 54, 0.22);
+        border-radius: 6px;
+        content: "";
+        pointer-events: none;
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        color: #6b2b22;
+        font-size: clamp(34px, 7vw, 64px);
+        font-weight: 700;
+        line-height: 0.95;
+        text-align: center;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        margin: -8px 0 32px;
+        color: #8b4b3a;
+        font-size: clamp(16px, 3vw, 20px);
+        font-style: italic;
+        text-align: center;
+      }
+
+      p {
+        margin: 0 0 18px;
+        font-size: clamp(17px, 2.8vw, 20px);
+        line-height: 1.78;
+      }
+
+      .signature {
+        margin-top: 28px;
+        color: #7b2d25;
+        font-size: clamp(20px, 4vw, 28px);
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .flowers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 14px;
+        margin-top: 30px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(123, 75, 54, 0.2);
+        font-size: clamp(28px, 7vw, 46px);
+      }
+
+      .flower {
+        animation: bloom 1.4s ease both;
+        transform-origin: center bottom;
+      }
+
+      .flower:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+
+      .flower:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .flower:nth-child(4) {
+        animation-delay: 0.45s;
+      }
+
+      .flower:nth-child(5) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes bloom {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.55);
         }
 
-        /* General Body Styling */
-        body {
-            font-family: 'Lora', serif;
-            line-height: 1.85; /* Slightly increased line-height */
-            margin: 0;
-            padding: 60px; /* Increased padding */
-            background-color: var(--background-color);
-            color: var(--primary-text-color);
-            max-width: 800px; /* Wider content area */
-            margin-left: auto;
-            margin-right: auto;
-            border: 12px solid var(--border-color); /* Thicker, softer border */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper, softer shadow */
-            border-radius: 8px;
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (max-width: 920px) {
+        .bear-side {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .page {
+          padding: 18px 12px;
         }
 
-        /* Header Styling */
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--header-color); /* Muted terracotta color */
-            font-size: 3.0em; /* Slightly larger header */
-            letter-spacing: 1.5px;
-            padding-bottom: 18px;
-            margin-bottom: 45px;
-            text-align: center;
-            font-weight: 700;
-            position: relative;
+        .letter {
+          padding: 28px 22px;
         }
-        h1::after {
-            content: '';
-            display: block;
-            width: 100px; /* Wider line */
-            height: 2px;
-            background: var(--accent-gold); /* Antique gold line */
-            margin: 10px auto 0;
+
+        .letter::before {
+          inset: 9px;
         }
-        
-        /* Paragraph Styling */
+
         p {
-            margin-bottom: 30px;
-            text-align: justify; /* Justify text for a refined look */
+          line-height: 1.68;
         }
-
-        /* Drop Cap Effect for the first paragraph */
-        p:first-of-type::first-letter {
-            float: left;
-            font-size: 5.0em; /* Slightly larger drop cap */
-            line-height: 0.8;
-            padding-top: 5px;
-            padding-right: 10px;
-            padding-left: 0px; /* Aligned better with the margin */
-            font-family: 'Playfair Display', serif;
-            color: var(--accent-gold); /* Use the rich gold accent */
-            font-weight: 700;
-        }
-
-        /* Emphasis and Highlights */
-        .highlight {
-            font-weight: 600;
-            color: var(--highlight-color); /* Deep plum/rosewood for gentle, rich emphasis */
-            font-style: italic;
-            /* Optional: subtle background for better pop */
-            background-color: rgba(227, 217, 204, 0.3);
-            padding: 0 4px;
-            border-radius: 3px;
-        }
-
-        /* Dedicated List Section (for the list of qualities) */
-        .qualities-list {
-            list-style-type: none; /* Remove default bullet */
-            padding-left: 0; /* Align list better */
-            margin: 40px 0;
-            border-left: 4px solid var(--accent-gold); /* Elegant vertical line accent */
-            padding-left: 30px;
-        }
-
-        .qualities-list li {
-            padding: 8px 0;
-            color: var(--list-color); /* Muted sage green color */
-            font-size: 1.1em;
-            font-weight: 600; /* Bolder list items */
-        }
-        /* Custom list marker using ::before */
-        .qualities-list li::before {
-            content: '•';
-            color: var(--highlight-color); /* Highlight color for the bullet point */
-            font-weight: 700;
-            display: inline-block; 
-            width: 1em;
-            margin-left: -1em;
-        }
-
-
-        /* Footer/Closing Section */
-        .closing {
-            margin-top: 60px; /* More space above footer */
-            padding-top: 30px;
-            border-top: 1px solid var(--header-color); /* Line matching the header tone */
-            text-align: center;
-            font-size: 1.0em;
-            color: #666666; /* Soft gray */
-            font-style: italic; /* Added italic style */
-        }
+      }
     </style>
-</head>
-<body>
-    <h1>
-        Hey Pastor Jane 
-    </h1>
-    <p>
-        Sometimes I look back at my life and wonder how I made it through certain moments… and then I remember that God sent me people like you. People who don’t just pass through your life, but leave <span class="highlight">fingerprints on your heart.</span> 
-        And you, more than anyone, have left a mark that time can never erase. It’s still unbelievable to me that we’ve only known each other for two years. Two small years yet it feels like our connection was written long before we ever met. It feels like my soul recognized you instantly, like we were never strangers. What we have doesn’t feel new… <span class="highlight">it feels destined. Familiar. Almost divine.</span>
-    </p>
+  </head>
+  <body>
+    <div class="heart-bg"></div>
 
-    <p>
-        You’ve been more than a sister to me — you’ve been a blessing, a lifeline, and a living reminder that God still sends people with pure hearts. People who care deeply, quietly, genuinely.
-    </p>
-
-    <p>
-        Thank you for every moment you listened to my problems, even when I didn’t have the right words, even when all I had were pieces of thoughts and heavy feelings. You didn’t just hear me — <span class="highlight">you understood me.</span> And that kind of understanding is rare.
-    </p>
-
-    <p>
-        Thank you for noticing when I wasn’t okay, even when I tried to hide it behind a smile or short messages. The way you’d ask, “What’s wrong?” or “Are you okay?” with that gentle concern… it mattered. You have no idea how many days you saved by simply caring enough to notice my silence. <span class="highlight">Sometimes your voice alone brought peace into storms I didn’t know how to calm.</span>
-    </p>
-
-    <p>
-        You’ve encouraged me when my spirit felt tired.
-        You’ve lifted me when life felt too heavy.
-        <span class="highlight">You’ve believed in me when I struggled to believe in myself.</span>
-    </p>
-
-    <p>
-        There is something sacred about the way you’ve supported me — not from obligation, not from convenience, but from a place of genuine love, kindness, and compassion. That is the kind of support that changes a person. <span class="highlight">That is the kind of presence that heals.</span>
-    </p>
-    
-    <p>
-        These two years with you have shown me that family isn’t always blood — sometimes it’s the people God places in your path at the exact moment you need them. And you have been that person for me in ways words can barely capture.
-    </p>
-
-    <ul class="qualities-list">
-        <li>I appreciate your patience.</li>
-        <li>I appreciate your honesty.</li>
-        <li>I appreciate your wisdom.</li>
-        <li>I appreciate your heart.</li>
-        <li>I appreciate your strength.</li>
-        <li>I appreciate your kindness.</li>
-    </ul>
-
-    <p>
-        And most of all, I appreciate the way you’ve stood with me <span class="highlight">gently, consistently, faithfully</span> — through days when I was shining and through days when I was falling apart.
-    </p>
-    
-    <p>
-        I pray that God surrounds you with the same love you’ve poured into me. I pray that He opens doors for you, protects your heart, and rewards everything you’ve done for me — both the things I thanked you for and the things I didn’t even notice.
-    </p>
-
-    <div class="closing">
-        <p>
-            Two years… yet it feels like a lifetime of love, loyalty, and genuine connection.
-            <br>And I thank God for every moment you’ve walked beside me.
-        </p>
+    <div class="bear-side bear-left" aria-hidden="true">
+      <span>🧸</span>
+      <span>🤎</span>
+      <span>🧸</span>
     </div>
-</body>
+
+    <main class="page">
+      <article class="letter">
+        <h1>To My Teddy ❤❤</h1>
+        <div class="subtitle">For my sweet, beautiful, chubby princess</div>
+
+        <p>
+          Hey Teddy, surprise. This letter is just to remind you how much I
+          appreciate you, how much I love you, and how deeply grateful I am to
+          have you in my life.
+        </p>
+
+        <p>
+          I am almost in tears while writing this because I keep thinking about
+          the times I have not been the boyfriend you deserved. Sometimes I sit
+          and wonder if you really deserved someone as difficult as me, but that
+          is not mine alone to decide. What I do know is this: I truly love you,
+          and sometimes I wonder if telling you with words will ever be enough.
+        </p>
+
+        <p>
+          I know keeping up with me can be tiring. I know I can be stubborn,
+          emotional, annoying, and hard to understand. But we are still here,
+          four months down, and I am still blessed to call you mine. You are my
+          caring, kind, loving, motherly, and warm girl. You are beautiful
+          inside and out, and you make love feel soft even when life feels
+          heavy.
+        </p>
+
+        <p>
+          God knows how long we will be together. That thought can be scary, I
+          know. But for as long as I am yours and you are mine, I promise to
+          make this love memorable and unforgettable for both of us. I promise
+          to keep learning you, choosing you, and trying harder for you.
+        </p>
+
+        <p>
+          Sometimes our relationship gets scary, but maybe that is part of its
+          beauty. We get to know each other more. We get to grow through the
+          hard days and laugh through the silly ones. I love every version of
+          you: my friend, my mentor, my therapist, my comfort, my favorite
+          rage-baiter, and most of all, my girl.
+        </p>
+
+        <p>
+          I wish I could give you a tight hug right now because you deserve one.
+          You deserve softness, patience, honesty, loyalty, and a love that
+          makes you feel safe. Baby, just know that I love you much more than I
+          say, much more often than you realize, and much deeper than words can
+          carry.
+        </p>
+
+        <p>
+          Thank you for staying, for loving me, for being you, and for making my
+          heart feel at home.
+        </p>
+
+        <div class="signature">I love you, Teddy. Always. ❤❤</div>
+
+        <div class="flowers" aria-hidden="true">
+          <span class="flower">🌹</span>
+          <span class="flower">🌸</span>
+          <span class="flower">🌷</span>
+          <span class="flower">🌺</span>
+          <span class="flower">🌻</span>
+        </div>
+      </article>
+    </main>
+
+    <div class="bear-side bear-right" aria-hidden="true">
+      <span>🧸</span>
+      <span>🤎</span>
+      <span>🧸</span>
+    </div>
+  </body>
 </html>
